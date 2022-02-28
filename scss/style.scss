@@ -1,12 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700&display=swap");
 
+$font-stack: "Raleway", sans-serif;
 $primary-color: #ff8700;
 $light-color: #f5f5f5;
 $dark-color: #151515;
 $lightGrey-color: #ddd8d8;
 $grey-color: #333;
 $cyan-color: rgb(5, 185, 185);
-$font-stack: "Raleway", sans-serif;
 $font-white: #fff;
 $font-black: #181818;
 $font-grey: #555;
@@ -20,14 +20,28 @@ $large-screen: 992px;
   box-sizing: border-box;
 }
 
+body {
+  font-family: $font-stack;
+  background-color: $light-color;
+  color: $font-black;
+  line-height: 1.6;
+}
+
 html {
   scroll-behavior: smooth;
 }
 
-body {
-  font-family: $font-stack;
-  background-color: $light-color;
-  line-height: 1.6;
+::-webkit-scrollbar {
+  width: 0.85rem;
+}
+
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px rgb(52, 52, 52);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #eb7e02;
+  border-radius: 10px;
 }
 
 li {
@@ -49,13 +63,35 @@ img {
   overflow: hidden;
 }
 
+@mixin flash {
+  animation: flash;
+  animation-duration: 1s;
+}
+
+@mixin pulse {
+  animation: pulse;
+  animation-duration: 2s;
+}
+
+@mixin grid {
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-column-gap: 1.5rem;
+  grid-row-gap: 2rem;
+}
+
 // ===== navbar =====
 .navbar {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  background-color: $primary-color;
+  position: fixed;
+  width: 100%;
+  background-color: transparent;
   color: $light-color;
+  z-index: 10;
+  opacity: 0.9;
   padding: 1.3rem;
 
   @media (max-width: $medium-screen) {
@@ -92,11 +128,11 @@ img {
     font-weight: 500;
   }
 
-  .navbar-links li a {
+  .nav-links li a {
     color: $light-color;
 
     &:hover {
-      color: $grey-color;
+      color: $cyan-color;
     }
   }
 
@@ -142,6 +178,7 @@ img {
       font-size: 2.2rem;
       font-weight: 600;
       padding: 13px;
+      text-align: center;
 
       @media (max-width: $small-screen) {
         font-size: 1.6rem;
@@ -161,8 +198,285 @@ img {
       cursor: pointer;
     }
     .btn:hover {
-      animation: flash;
-      animation-duration: 1s;
+      @include flash();
+    }
+  }
+}
+
+// ===== about =====
+.about-us {
+  padding: 2rem 0;
+  background-color: $lightGrey-color;
+
+  .about-container {
+    max-width: 990px;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin: 0 auto;
+
+    .about-content {
+      flex: 1 1 400px;
+      padding: 30px;
+      margin: 0 auto;
+
+      h2 {
+        text-transform: capitalize;
+      }
+
+      p {
+        color: $font-grey;
+        font-weight: 600;
+        line-height: 2;
+      }
+    }
+
+    .about-image {
+      flex: 1 1 400px;
+      padding: 30px;
+      animation: backInRight;
+      animation-duration: 2s;
+
+      img {
+        display: block;
+        height: 200px;
+      }
+    }
+  }
+}
+
+// ===== food category =====
+.food {
+  padding: 2rem 0 3rem;
+  h2 {
+    text-align: center;
+    font-weight: 600;
+    padding: 10px 0 20px;
+  }
+
+  .food-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+
+    @media (max-width: $medium-screen) {
+      flex-direction: column;
+      flex-wrap: nowrap;
+    }
+
+    .food-type {
+      flex-basis: 30%;
+      margin: 1rem auto;
+
+      .img-content {
+        text-align: center;
+        background-color: $dark-color;
+        color: $font-white;
+        cursor: pointer;
+        margin-top: -8px;
+        animation: slideInUp;
+        animation-duration: 2s;
+
+        h4 {
+          padding: 12px 0;
+        }
+
+        .btn {
+          padding: 10px 13px;
+          margin: 0 auto 1rem;
+          background-color: $primary-color;
+          color: $font-white;
+          border: none;
+          border-radius: 3px;
+          opacity: 0.9;
+
+          cursor: pointer;
+
+          &:hover {
+            @include flash();
+          }
+        }
+      }
+    }
+  }
+}
+
+// ===== food menu =====
+.food-menu {
+  padding: 2rem 0 4rem;
+  background-color: $lightGrey-color;
+
+  h2 {
+    text-align: center;
+    font-weight: 600;
+    padding: 10px 0 20px;
+  }
+  .menu {
+    @include grid();
+
+    .menu-content:hover {
+      @include pulse;
+    }
+
+    h4 {
+      color: $grey-color;
+    }
+  }
+}
+
+// ===== testimonial =====
+.testimonial {
+  padding: 2rem 0;
+  h2 {
+    text-align: center;
+    font-weight: 600;
+    padding: 10px 0 20px;
+  }
+
+  .testimonial-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+
+    @media (max-width: $medium-screen) {
+      flex-direction: column;
+      flex-wrap: nowrap;
+    }
+
+    .testimonial-content {
+      flex-basis: 32%;
+      margin: 10px auto;
+
+      p {
+        color: $grey-color;
+        font-size: smaller;
+        padding: 10px 25px;
+
+        i {
+          color: $cyan-color;
+        }
+      }
+      .name {
+        text-align: center;
+        font-weight: 600;
+      }
+      .stars {
+        color: $cyan-color;
+        text-align: center;
+      }
+      .image img {
+        width: 120px;
+        display: block;
+        margin: 10px auto;
+        border-radius: 50%;
+      }
+    }
+  }
+}
+
+// ===== contact =====
+.contact {
+  padding: 3rem 0;
+  background-color: $lightGrey-color;
+
+  .contact-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    @media (max-width: $medium-screen) {
+      flex-direction: column;
+    }
+
+    div {
+      width: 25rem;
+      height: 16rem;
+    }
+
+    .form-container {
+      display: flex;
+      flex-direction: column;
+
+      @media (max-width: $medium-screen) {
+        margin-top: 3rem;
+      }
+
+      input,
+      textarea {
+        padding: 5px 0;
+        margin: 10px 0;
+        background: transparent;
+        border: none;
+        border-bottom: 1px solid $dark-color;
+
+        &:focus {
+          outline: none;
+        }
+      }
+      button {
+        display: block;
+        margin: 0.6rem auto 0;
+        padding: 0.6rem 1.2rem;
+        border: none;
+        border-radius: 4px;
+        background-color: $grey-color;
+        color: $font-white;
+        font-weight: bold;
+        cursor: pointer;
+
+        &:hover {
+          @include flash();
+        }
+      }
+    }
+  }
+}
+
+// ===== footer =====
+.footer {
+  .footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: $grey-color;
+    color: $font-white;
+    padding: 1rem;
+
+    @media (max-width: $small-screen) {
+      flex-direction: column;
+    }
+
+    p {
+      font-size: small;
+
+      a {
+        color: $primary-color;
+
+        &:hover {
+          @include flash();
+        }
+      }
+    }
+    .social p i {
+      padding: 6px;
+      font-size: medium;
+      border: 1px solid $light-color;
+      border-radius: 50%;
+      background-color: $light-color;
+      color: $grey-color;
+      margin-right: 5px;
+
+      &:hover {
+        @include flash();
+      }
+    }
+
+    .social {
+      @media (max-width: $small-screen) {
+        margin: 10px auto;
+      }
     }
   }
 }
