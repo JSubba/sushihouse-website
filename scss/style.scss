@@ -3,12 +3,9 @@
 $font-stack: "Raleway", sans-serif;
 $primary-color: #ff8700;
 $light-color: #f5f5f5;
-$dark-color: #151515;
+$dark-color: #252525;
 $lightGrey-color: #ddd8d8;
 $grey-color: #333;
-$cyan-color: rgb(5, 185, 185);
-$font-white: #fff;
-$font-black: #181818;
 $font-grey: #555;
 $small-screen: 576px;
 $medium-screen: 768px;
@@ -23,7 +20,7 @@ $large-screen: 992px;
 body {
   font-family: $font-stack;
   background-color: $light-color;
-  color: $font-black;
+  color: $dark-color;
   line-height: 1.6;
 }
 
@@ -132,7 +129,7 @@ img {
     color: $light-color;
 
     &:hover {
-      color: $cyan-color;
+      color: $lightGrey-color;
     }
   }
 
@@ -172,7 +169,7 @@ img {
     justify-content: center;
     align-items: center;
     opacity: 0.8;
-    color: $font-white;
+    color: $light-color;
 
     h1 {
       font-size: 2.2rem;
@@ -187,7 +184,7 @@ img {
 
     .btn {
       background-color: $primary-color;
-      color: $font-white;
+      color: $light-color;
       font-size: large;
       font-weight: 500;
       padding: 14px 1.2rem;
@@ -272,7 +269,7 @@ img {
       .img-content {
         text-align: center;
         background-color: $dark-color;
-        color: $font-white;
+        color: $light-color;
         cursor: pointer;
         margin-top: -8px;
         animation: slideInUp;
@@ -286,7 +283,7 @@ img {
           padding: 10px 13px;
           margin: 0 auto 1rem;
           background-color: $primary-color;
-          color: $font-white;
+          color: $light-color;
           border: none;
           border-radius: 3px;
           opacity: 0.9;
@@ -310,17 +307,24 @@ img {
   h2 {
     text-align: center;
     font-weight: 600;
-    padding: 10px 0 20px;
+    padding: 10px 0 30px;
   }
   .menu {
     @include grid();
 
-    .menu-content:hover {
-      @include pulse;
-    }
+    .menu-content {
+      p {
+        color: $primary-color;
+        font-weight: 500;
 
-    h4 {
-      color: $grey-color;
+        &:last-child {
+          color: $font-grey;
+        }
+      }
+
+      &:hover {
+        @include pulse;
+      }
     }
   }
 }
@@ -355,7 +359,7 @@ img {
         padding: 10px 25px;
 
         i {
-          color: $cyan-color;
+          color: $primary-color;
         }
       }
       .name {
@@ -363,7 +367,7 @@ img {
         font-weight: 600;
       }
       .stars {
-        color: $cyan-color;
+        color: $grey-color;
         text-align: center;
       }
       .image img {
@@ -406,7 +410,7 @@ img {
       input,
       textarea {
         padding: 5px 0;
-        margin: 10px 0;
+        margin: 0.4rem 1.3rem;
         background: transparent;
         border: none;
         border-bottom: 1px solid $dark-color;
@@ -422,7 +426,7 @@ img {
         border: none;
         border-radius: 4px;
         background-color: $grey-color;
-        color: $font-white;
+        color: $light-color;
         font-weight: bold;
         cursor: pointer;
 
@@ -436,12 +440,15 @@ img {
 
 // ===== footer =====
 .footer {
+  background-image: url(../images/footer-bg.jpg);
+  background-position: center;
+  background-size: cover;
+
   .footer-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: $grey-color;
-    color: $font-white;
+    color: $light-color;
     padding: 1rem;
 
     @media (max-width: $small-screen) {
@@ -452,7 +459,7 @@ img {
       font-size: small;
 
       a {
-        color: $primary-color;
+        color: $light-color;
 
         &:hover {
           @include flash();

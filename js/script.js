@@ -1,7 +1,7 @@
+// nav scroll
 window.onscroll = function () {
   scrollFunction();
 };
-
 function scrollFunction() {
   if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
     document.querySelector(".navbar").style.backgroundColor = "#ff8700";
@@ -10,6 +10,23 @@ function scrollFunction() {
   }
 }
 
+// nav toggle
+const toggleMenu = () => {
+  const toggleIcon = document.querySelector(".toggle-icon");
+  const navbarLinks = document.querySelector(".navbar-links");
+
+  toggleIcon.addEventListener("click", () => {
+    navbarLinks.classList.toggle("navbarLinks-active");
+  });
+};
+toggleMenu();
+
+// smooth scroll
+var scroll = new SmoothScroll('a[href*="#"]', {
+  speed: 300,
+});
+
+// menu data
 const displayMenuItems = document.querySelector(".menu");
 
 fetch("menu.json")
@@ -36,14 +53,3 @@ fetch("menu.json")
     });
   })
   .catch((error) => console.log("Error: " + error));
-
-const toggleMenu = () => {
-  const toggleIcon = document.querySelector(".toggle-icon");
-  const navbarLinks = document.querySelector(".navbar-links");
-
-  toggleIcon.addEventListener("click", () => {
-    navbarLinks.classList.toggle("navbarLinks-active");
-  });
-};
-
-toggleMenu();
