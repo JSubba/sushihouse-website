@@ -7,8 +7,6 @@ $dark-color: #151515;
 $lightGrey-color: #ddd8d8;
 $grey-color: #333;
 $font-white: #fff;
-$font-black: #181818;
-$font-grey: #555;
 $small-screen: 576px;
 $medium-screen: 768px;
 $large-screen: 992px;
@@ -22,7 +20,7 @@ $large-screen: 992px;
 body {
   font-family: $font-stack;
   background-color: $light-color;
-  color: $font-black;
+  color: $dark-color;
   line-height: 1.6;
 }
 
@@ -234,7 +232,7 @@ img {
       }
 
       p {
-        color: $font-grey;
+        color: $grey-color;
         font-weight: 600;
         line-height: 2;
       }
@@ -440,11 +438,15 @@ img {
 
 // ===== footer =====
 .footer {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+    url("/images/footer-bg.jpg");
+  background-position: center;
+  background-size: cover;
+
   .footer-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: $grey-color;
     color: $font-white;
     padding: 1.5rem 1rem;
 
