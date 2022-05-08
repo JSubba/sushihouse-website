@@ -257,7 +257,8 @@ img {
 // ===== food category =====
 .food {
   padding: 2rem 0 3rem;
-  h2 {
+  h1 {
+    font-size: 1.8rem;
     text-align: center;
     font-weight: 600;
     padding: 10px 0 20px;
@@ -314,32 +315,8 @@ img {
   }
 }
 
-// ===== food menu =====
-.food-menu {
-  padding: 2rem 0 4rem;
-  background-color: $lightGrey-color;
-
-  h2 {
-    text-align: center;
-    font-weight: 600;
-    padding: 10px 0 20px;
-  }
-  .menu {
-    @include grid();
-
-    .menu-content:hover {
-      @include pulse;
-    }
-
-    h4 {
-      color: $grey-color;
-    }
-  }
-}
-
 // ===== testimonial =====
 .testimonial {
-  padding: 3rem 0;
   h1 {
     font-size: 1.8rem;
     text-align: center;

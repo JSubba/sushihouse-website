@@ -27,31 +27,3 @@ toggleMenu();
 var scroll = new SmoothScroll('a[href*="#"]', {
   speed: 300,
 });
-
-// menu data
-const displayMenuItems = document.querySelector(".menu");
-
-fetch("menu.json")
-  .then((response) => {
-    return response.json();
-  })
-  .then((data) => {
-    let menuItems = data.menu;
-
-    showItems = "";
-    menuItems = menuItems.map((item) => {
-      const { name, price, description, image } = item;
-
-      showItems += ` 
-      <div class="menu-content">
-      <img src="${image}" alt="menu-image"/>
-        <h4>${name}</h4>
-        <p>&yen;${price}</p>
-        <p><small>${description}</small></p>
-      </div>
-      `;
-
-      displayMenuItems.innerHTML = showItems;
-    });
-  })
-  .catch((error) => console.log("Error: " + error));
