@@ -3,9 +3,11 @@
 $font-stack: "Raleway", sans-serif;
 $primary-color: #ff8700;
 $light-color: #f5f5f5;
-$dark-color: #252525;
+$dark-color: #151515;
 $lightGrey-color: #ddd8d8;
 $grey-color: #333;
+$font-white: #fff;
+$font-black: #181818;
 $font-grey: #555;
 $small-screen: 576px;
 $medium-screen: 768px;
@@ -20,7 +22,7 @@ $large-screen: 992px;
 body {
   font-family: $font-stack;
   background-color: $light-color;
-  color: $dark-color;
+  color: $font-black;
   line-height: 1.6;
 }
 
@@ -81,7 +83,7 @@ img {
 // ===== navbar =====
 .navbar {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   position: fixed;
   width: 100%;
@@ -89,11 +91,18 @@ img {
   color: $light-color;
   z-index: 10;
   opacity: 0.9;
-  padding: 1.3rem;
+  padding: 1.3rem 5rem;
 
   @media (max-width: $medium-screen) {
     flex-direction: column;
     align-items: flex-start;
+    padding: 1.3rem;
+  }
+
+  .logo {
+    color: $primary-color;
+    font-family: Cambria, serif;
+    font-size: 1.8rem;
   }
 
   .navbar-links {
@@ -121,7 +130,8 @@ img {
   }
 
   .navbar-links li {
-    padding: 8px;
+    font-size: 1.1rem;
+    padding: 10px;
     font-weight: 500;
   }
 
@@ -129,13 +139,15 @@ img {
     color: $light-color;
 
     &:hover {
-      color: $lightGrey-color;
+      color: $primary-color;
+      text-decoration: underline;
+      opacity: 0.8;
     }
   }
 
   .toggle-icon {
     position: absolute;
-    top: 1.4rem;
+    top: 2rem;
     right: 1rem;
     display: none;
 
@@ -169,7 +181,7 @@ img {
     justify-content: center;
     align-items: center;
     opacity: 0.8;
-    color: $light-color;
+    color: $font-white;
 
     h1 {
       font-size: 2.2rem;
@@ -184,7 +196,7 @@ img {
 
     .btn {
       background-color: $primary-color;
-      color: $light-color;
+      color: $font-white;
       font-size: large;
       font-weight: 500;
       padding: 14px 1.2rem;
@@ -269,7 +281,7 @@ img {
       .img-content {
         text-align: center;
         background-color: $dark-color;
-        color: $light-color;
+        color: $font-white;
         cursor: pointer;
         margin-top: -8px;
         animation: slideInUp;
@@ -283,15 +295,18 @@ img {
           padding: 10px 13px;
           margin: 0 auto 1rem;
           background-color: $primary-color;
-          color: $light-color;
+          color: $font-white;
           border: none;
           border-radius: 3px;
           opacity: 0.9;
+          letter-spacing: 1px;
+          font-weight: 600;
 
           cursor: pointer;
 
           &:hover {
-            @include flash();
+            transform: scale(1.05);
+            transition: 0.5s ease-in;
           }
         }
       }
@@ -307,32 +322,26 @@ img {
   h2 {
     text-align: center;
     font-weight: 600;
-    padding: 10px 0 30px;
+    padding: 10px 0 20px;
   }
   .menu {
     @include grid();
 
-    .menu-content {
-      p {
-        color: $primary-color;
-        font-weight: 500;
+    .menu-content:hover {
+      @include pulse;
+    }
 
-        &:last-child {
-          color: $font-grey;
-        }
-      }
-
-      &:hover {
-        @include pulse;
-      }
+    h4 {
+      color: $grey-color;
     }
   }
 }
 
 // ===== testimonial =====
 .testimonial {
-  padding: 2rem 0;
-  h2 {
+  padding: 3rem 0;
+  h1 {
+    font-size: 1.8rem;
     text-align: center;
     font-weight: 600;
     padding: 10px 0 20px;
@@ -355,7 +364,6 @@ img {
 
       p {
         color: $grey-color;
-        font-size: smaller;
         padding: 10px 25px;
 
         i {
@@ -367,7 +375,8 @@ img {
         font-weight: 600;
       }
       .stars {
-        color: $grey-color;
+        color: $primary-color;
+        font-size: 1.2rem;
         text-align: center;
       }
       .image img {
@@ -382,15 +391,23 @@ img {
 
 // ===== contact =====
 .contact {
-  padding: 3rem 0;
+  padding: 3.5rem 5rem;
   background-color: $lightGrey-color;
+
+  h1 {
+    font-size: 1.8rem;
+    text-align: center;
+    font-weight: 600;
+    padding: 0 0 3rem;
+  }
 
   .contact-container {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
+    gap: 2rem;
 
-    @media (max-width: $medium-screen) {
+    @media (max-width: $large-screen) {
       flex-direction: column;
     }
 
@@ -403,14 +420,14 @@ img {
       display: flex;
       flex-direction: column;
 
-      @media (max-width: $medium-screen) {
-        margin-top: 3rem;
+      @media (max-width: $small-screen) {
+        margin-top: 2rem;
       }
 
       input,
       textarea {
         padding: 5px 0;
-        margin: 0.4rem 1.3rem;
+        margin: 10px 0;
         background: transparent;
         border: none;
         border-bottom: 1px solid $dark-color;
@@ -418,20 +435,26 @@ img {
         &:focus {
           outline: none;
         }
+
+        @media (max-width: $small-screen) {
+          padding-left: 40px;
+        }
       }
       button {
         display: block;
         margin: 0.6rem auto 0;
-        padding: 0.6rem 1.2rem;
+        padding: 0.8rem 1.5rem;
         border: none;
         border-radius: 4px;
         background-color: $grey-color;
-        color: $light-color;
+        color: $font-white;
         font-weight: bold;
+        letter-spacing: 2px;
         cursor: pointer;
 
         &:hover {
-          @include flash();
+          transform: scale(1.05);
+          transition: 0.5s ease-in;
         }
       }
     }
@@ -440,34 +463,24 @@ img {
 
 // ===== footer =====
 .footer {
-  background-image: url(../images/footer-bg.jpg);
-  background-position: center;
-  background-size: cover;
-
   .footer-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    color: $light-color;
-    padding: 1rem;
+    background-color: $grey-color;
+    color: $font-white;
+    padding: 1.5rem 1rem;
 
     @media (max-width: $small-screen) {
       flex-direction: column;
     }
 
     p {
-      font-size: small;
-
-      a {
-        color: $light-color;
-
-        &:hover {
-          @include flash();
-        }
-      }
+      color: $lightGrey-color;
     }
+
     .social p i {
-      padding: 6px;
+      padding: 0.5rem;
       font-size: medium;
       border: 1px solid $light-color;
       border-radius: 50%;
@@ -478,6 +491,12 @@ img {
       &:hover {
         @include flash();
       }
+    }
+
+    .social p .arrow-up {
+      color: $font-white;
+      background-color: $primary-color;
+      font-weight: 600;
     }
 
     .social {

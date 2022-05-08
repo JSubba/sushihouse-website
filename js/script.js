@@ -5,8 +5,10 @@ window.onscroll = function () {
 function scrollFunction() {
   if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
     document.querySelector(".navbar").style.backgroundColor = "#ff8700";
+    document.querySelector(".logo").style.color = "#f8f8f8";
   } else {
     document.querySelector(".navbar").style.backgroundColor = "transparent";
+    document.querySelector(".logo").style.color = "#eb7e02";
   }
 }
 
